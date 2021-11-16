@@ -119,7 +119,9 @@ function ListingScreen(props) {
   }, []);
 
   var deleteOffer = async (id) => {
-    const data = await fetch(`http://${MY_IP}:3000/deleteOffer?token=${sellerData.sellerToken}&id=${id}`);
+    const data = await fetch(`http://${MY_IP}:3000/deleteOffer?token=${sellerData.sellerToken}&id=${id}`, {
+      method: "DELETE",
+    });
     const body = await data.json();
     if (body.result) {
       props.navigation.navigate("Accueil");

@@ -47,7 +47,12 @@ function ProfileScreen(props) {
 
   const onChange = async () => {
     // setLoading(true)
-    const res = await fetch(`http://${MY_IP}:3000/home/updateUser?token=${props.dataUser.token}&description=${data.description}&job=${data.job}`);
+    // const res = await fetch(`http://${MY_IP}:3000/home/updateUser?token=${props.dataUser.token}&description=${data.description}&job=${data.job}`);
+    const res = await fetch(`http://${MY_IP}:3000/home/updateUser`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `token=${props.dataUser.token}&description=${data.description}&job=${data.job}`,
+    });
     if (res) {
       setEdit(false);
       showMessage({
