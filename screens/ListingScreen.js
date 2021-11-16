@@ -59,7 +59,7 @@ function ListingScreen(props) {
 
   useEffect(() => {
     async function displayOffer() {
-      const reqFind = await fetch(`http://${MY_IP}:3000/display-offer?offerId=${props.route.params.offerId}&token=${props.dataUser.token}`);
+      const reqFind = await fetch(`http://${MY_IP}/display-offer?offerId=${props.route.params.offerId}&token=${props.dataUser.token}`);
       const resultFind = await reqFind.json();
 
       setOfferData(resultFind.offerData);
@@ -119,7 +119,7 @@ function ListingScreen(props) {
   }, []);
 
   var deleteOffer = async (id) => {
-    const data = await fetch(`http://${MY_IP}:3000/deleteOffer?token=${sellerData.sellerToken}&id=${id}`, {
+    const data = await fetch(`http://${MY_IP}/deleteOffer?token=${sellerData.sellerToken}&id=${id}`, {
       method: "DELETE",
     });
     const body = await data.json();
@@ -130,7 +130,7 @@ function ListingScreen(props) {
 
   /// fonction pour créer une conversation quand on clique sur le bouton bleu handshake
   var createConversation = async () => {
-    const data = await fetch(`http://${MY_IP}:3000/inbox/addMessage`, {
+    const data = await fetch(`http://${MY_IP}/inbox/addMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `sender_token=${props.dataUser.token}&seller_token=${sellerData.sellerToken}&buyer_token=${props.dataUser.token}&quest_id=${props.route.params.questId}&offer_id=${offerData._id}&message=${newMessage}`,

@@ -24,7 +24,7 @@ function ConversationsScreen(props) {
     console.log("conv props.dataUser", props.dataUser.firstName);
 
     async function loadListQuest() {
-      const data = await fetch(`http://${MY_IP}:3000/inbox/?token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/inbox/?token=${props.dataUser.token}`);
       const body = await data.json();
       var list = body.listQuest.map((quest) => {
         return {
@@ -42,7 +42,7 @@ function ConversationsScreen(props) {
   //Quand on click sur une quête, on charge les conversations de celle ci.
   useEffect(() => {
     async function selectedConversation() {
-      const data = await fetch(`http://${MY_IP}:3000/inbox/selectedQuest?id=${selectedQuest}&token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/inbox/selectedQuest?id=${selectedQuest}&token=${props.dataUser.token}`);
       const body = await data.json();
       var list = body.conversations.map((conv) => {
         return {
@@ -68,7 +68,7 @@ function ConversationsScreen(props) {
 
   //Pour raffraichir la page via le header
   async function loadListQuest() {
-    const data = await fetch(`http://${MY_IP}:3000/inbox/?token=${props.dataUser.token}`);
+    const data = await fetch(`http://${MY_IP}/inbox/?token=${props.dataUser.token}`);
     const body = await data.json();
 
     var list = body.listQuest.map((quest) => {

@@ -36,7 +36,7 @@ function ExplorerScreen(props) {
   useEffect(() => {
     console.log("maps props.dataUser", props.dataUser.token);
     async function listQuest() {
-      const data = await fetch(`http://${MY_IP}:3000/inbox/?token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/inbox/?token=${props.dataUser.token}`);
       const body = await data.json();
       var list = body.listQuest.map((quest) => {
         return {
@@ -53,7 +53,7 @@ function ExplorerScreen(props) {
   //Quand on click sur une quête, on charge les offres de celle ci.
   useEffect(() => {
     async function results() {
-      const data = await fetch(`http://${MY_IP}:3000/resultsmap/?quest_id=${selectedQuest}&token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/resultsmap/?quest_id=${selectedQuest}&token=${props.dataUser.token}`);
       const body = await data.json();
 
       setListOffer(body.listOffers);

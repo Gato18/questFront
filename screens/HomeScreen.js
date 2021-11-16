@@ -31,7 +31,7 @@ function HomeScreen(props) {
   // Au chargement du composant, on obtient toutes les données de l'utilisateur.
   useEffect(() => {
     async function userData() {
-      const data = await fetch(`http://${MY_IP}:3000/home/userDetail?token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/home/userDetail?token=${props.dataUser.token}`);
       const body = await data.json();
       if (body.result) {
         setData(body.user);
@@ -54,7 +54,7 @@ function HomeScreen(props) {
   var createConversation = async () => {
     console.log("props.dataUser.quest", props.dataUser);
 
-    const data = await fetch(`http://${MY_IP}:3000/inbox/addMessage`, {
+    const data = await fetch(`http://${MY_IP}/inbox/addMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `sender_token=UdQxBmsipgFdvtQvrsqQTg_WopWmh9Jj&buyer_token=${props.dataUser.token}&seller_token=UdQxBmsipgFdvtQvrsqQTg_WopWmh9Jj&quest_id=${props.dataUser.quest[0]._id}&offer_id=617ef1724a67b6421214b74e&message=${newMessage}`,
@@ -245,12 +245,12 @@ function HomeScreen(props) {
 
   // Réutilisation de la fonction pour le refresh de la page.
   async function userData() {
-    const data = await fetch(`http://${MY_IP}:3000/home/userDetail?token=${props.dataUser.token}`);
+    const data = await fetch(`http://${MY_IP}/home/userDetail?token=${props.dataUser.token}`);
     const body = await data.json();
     if (body.result) {
       var countresult = [];
       for (let i = 0; i < body.user.quests.length; i++) {
-        const res = await fetch(`http://${MY_IP}:3000/countresults?token=${props.dataUser.token}&quest_id=${body.user.quests[i]._id}`);
+        const res = await fetch(`http://${MY_IP}/countresults?token=${props.dataUser.token}&quest_id=${body.user.quests[i]._id}`);
         const count = await res.json();
         countresult.push(count.listOffers);
       }

@@ -20,7 +20,7 @@ function ResultsScreen(props) {
   //Au chargement du composant, on cherche toutes les offres de la quête choisie
   useEffect(() => {
     async function offers() {
-      const data = await fetch(`http://${MY_IP}:3000/results?token=${props.dataUser.token}&quest_id=${props.route.params.questId}`);
+      const data = await fetch(`http://${MY_IP}/results?token=${props.dataUser.token}&quest_id=${props.route.params.questId}`);
       const body = await data.json();
       setListOffer(body.listOffers);
       setQuest(body.quest);

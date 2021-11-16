@@ -30,7 +30,7 @@ function ProfileScreen(props) {
   useEffect(() => {
     console.log("profil props.dataUser", props.dataUser.firstName);
     async function userData() {
-      const data = await fetch(`http://${MY_IP}:3000/home/userDetail?token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/home/userDetail?token=${props.dataUser.token}`);
       const body = await data.json();
       if (body.result) {
         setData(body.user);
@@ -47,8 +47,8 @@ function ProfileScreen(props) {
 
   const onChange = async () => {
     // setLoading(true)
-    // const res = await fetch(`http://${MY_IP}:3000/home/updateUser?token=${props.dataUser.token}&description=${data.description}&job=${data.job}`);
-    const res = await fetch(`http://${MY_IP}:3000/home/updateUser`, {
+    // const res = await fetch(`http://${MY_IP}/home/updateUser?token=${props.dataUser.token}&description=${data.description}&job=${data.job}`);
+    const res = await fetch(`http://${MY_IP}/home/updateUser`, {
       method: "PUT",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `token=${props.dataUser.token}&description=${data.description}&job=${data.job}`,

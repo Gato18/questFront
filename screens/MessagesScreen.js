@@ -24,7 +24,7 @@ function MessagesScreen(props) {
   useEffect(() => {
     async function listMsgConversation(id) {
       setSelectedConversation(id);
-      const data = await fetch(`http://${MY_IP}:3000/inbox/conversation?id=${id}&token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/inbox/conversation?id=${id}&token=${props.dataUser.token}`);
       const body = await data.json();
 
       var list = body.messages.listMessages.map((msg) => {
@@ -43,7 +43,7 @@ function MessagesScreen(props) {
 
   //Refresh les messages
   var refresh = async (id) => {
-    const data = await fetch(`http://${MY_IP}:3000/inbox/conversation?id=${id}&token=${props.dataUser.token}`);
+    const data = await fetch(`http://${MY_IP}/inbox/conversation?id=${id}&token=${props.dataUser.token}`);
     const body = await data.json();
 
     var list = body.messages.listMessages.map((msg) => {
@@ -60,7 +60,7 @@ function MessagesScreen(props) {
 
   //Au clic sur le bouton envoyer, on enregistre le nouveau message dans la conversation.
   var sendMessage = async (id, sender_token, message) => {
-    const data = await fetch(`http://${MY_IP}:3000/inbox/addMessage`, {
+    const data = await fetch(`http://${MY_IP}/inbox/addMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `id=${id}&sender_token=${sender_token}&message=${message}`,

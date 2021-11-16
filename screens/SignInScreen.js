@@ -25,7 +25,7 @@ function SignInScreen(props) {
   }, []);
 
   var handleSubmitSignIn = async () => {
-    const data = await fetch(`http://${MY_IP}:3000/users/sign-in`, {
+    const data = await fetch(`http://${MY_IP}/users/sign-in`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`,

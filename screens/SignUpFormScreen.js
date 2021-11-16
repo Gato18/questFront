@@ -21,7 +21,7 @@ function SignUpFormScreen(props) {
   const [listErrorsSignUp, setErrorsSignup] = useState([]);
 
   var handleSubmitSignup = async () => {
-    const data = await fetch(`http://${MY_IP}:3000/users/sign-up`, {
+    const data = await fetch(`http://${MY_IP}/users/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `firstNameFromFront=${firstName}&lastNameFromFront=${lastName}&emailFromFront=${signUpEmail}&phoneFromFront=${phoneNumber}&passwordFromFront=${signUpPassword}`,

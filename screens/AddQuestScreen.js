@@ -167,7 +167,7 @@ function AddQuestScreen(props) {
         },
       };
 
-      let envoiBack = await fetch(`http://${MY_IP}:3000/addquest`, {
+      let envoiBack = await fetch(`http://${MY_IP}/addquest`, {
         method: "post",
 
         body: JSON.stringify(data),

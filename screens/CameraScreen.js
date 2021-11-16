@@ -43,7 +43,7 @@ function CameraScreen(props) {
           onPress={async () => {
             setLoaderVisible(true);
             if (camera) {
-              let photo = await camera.takePictureAsync({ quality: 0.7 });
+              let photo = await camera.takePictureAsync({ quality: 0.3 });
               var data = new FormData();
               data.append("avatar", {
                 uri: photo.uri,
@@ -52,7 +52,7 @@ function CameraScreen(props) {
               });
               data.append("token", props.dataUser.token);
 
-              var rawResponse = await fetch(`http://${MY_IP}:3000/upload`, {
+              var rawResponse = await fetch(`http://${MY_IP}/upload`, {
                 method: "POST",
                 body: data,
               });
