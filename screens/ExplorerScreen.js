@@ -53,7 +53,7 @@ function ExplorerScreen(props) {
   //Quand on click sur une quête, on charge les offres de celle ci.
   useEffect(() => {
     async function results() {
-      const data = await fetch(`http://${MY_IP}/resultsmap/?quest_id=${selectedQuest}&token=${props.dataUser.token}`);
+      const data = await fetch(`http://${MY_IP}/results/?quest_id=${selectedQuest}&token=${props.dataUser.token}`);
       const body = await data.json();
 
       setListOffer(body.listOffers);
